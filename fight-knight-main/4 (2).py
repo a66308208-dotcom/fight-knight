@@ -30,15 +30,31 @@ class Player:
     def draw(self):
         draw.rect(window, self.color, self.rect)
 
-# Класс для мяча
-class Ball:
-    def __init__(self, color, x, y, size):
-        self.rect = Rect(x, y, size, size)
-        self.color = color
-
+    
+    def __init__(self, name, max_hp):
+        self.name = name
+        self.max_hp = max_hp
+        self.hp = max_hp
+        self.alive = True
     def draw(self):
         draw.rect(window, self.color, self.rect)
 
+    def take_damage(self, Player)
+        actual_damage = max(1, Playe)
+        self.hp-= actual_damage
+        print(f'{self.name} получает {actual_damage} урона!')
+        if self.hp <= 0:
+            self.hp = 0
+            self.alive = False
+            print(f'{self.name}убит!')
+        return actual_damage
+    def heal(self):
+        heal_amount = random.randint(15, 30)
+        self.hp = min(self.max_hp, self.hp + heal_amount)
+        print(f'{self.name} восстановил {heal_amount} HP! текущее HP: {self.hp}')
+
+    def is_alive(self):
+        return self.alive    
 # Создаем объекты
 racket1 = Player((0, 0, 255), 30, 200, 80, 80)
 racket1_damager = Player((0, 0, 255), 30, 200, 150, 20)
